@@ -1,0 +1,52 @@
+﻿<Window x:Class="DoctolibMVVM.Views.PatientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DoctolibMVVM.Views"
+        mc:Ignorable="d"
+        Title="PatientWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="700"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0" Header="Patient">
+            <StackPanel>
+                <Label Content="Code"></Label>
+                <TextBox Text="{Binding CodePatient}"></TextBox>
+                <Label Content="Nom"></Label>
+                <TextBox Text="{Binding NomPatient}"></TextBox>
+                <Label Content="Adresse"></Label>
+                <TextBox Text="{Binding AdressePatient}"></TextBox>
+                <Label Content="Date de naissance"></Label>
+                <TextBox Text="{Binding DateNaissance}"></TextBox>
+                <Label Content="Sexe"></Label>
+                <TextBox Text="{Binding SexePatient}"></TextBox>
+                <Button Content="Ajouter" Command="{Binding AddCommand}"></Button>
+                <Button Content="Modifier" Command="{Binding ModifyCommand}"></Button>
+                <Button Content="Supprimer" Command="{Binding DeleteCommand}"></Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="Liste Patients" MinWidth="400">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Nom du Patient"></Label>
+                    <TextBox Text="{Binding Search}" MinWidth="100"></TextBox>
+                    <Button Command="{Binding SearchCommand}"  Content="Rechercher"></Button>
+                </StackPanel>
+                <ListView ItemsSource="{Binding Patients}" SelectedItem="{Binding Patient}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Code" Width="100" DisplayMemberBinding="{Binding CodePatient}"></GridViewColumn>
+                            <GridViewColumn Header="Nom" Width="100" DisplayMemberBinding="{Binding NomPatient}"></GridViewColumn>
+                            <GridViewColumn Header="Adresse" Width="150" DisplayMemberBinding="{Binding AdressePatient}"></GridViewColumn>
+                            <GridViewColumn Header="Date Naissance" Width="150" DisplayMemberBinding="{Binding DateNaissance}"></GridViewColumn>
+                            <GridViewColumn Header="Sexe" Width="100" DisplayMemberBinding="{Binding SexePatient}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>

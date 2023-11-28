@@ -1,0 +1,26 @@
+﻿<Window x:Class="DoctolibMVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DoctolibMVVM"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1050">
+    <StackPanel>
+        <Menu>
+            <MenuItem Header="Gestion">
+                <MenuItem Header="Gestion de Médecins" Command="{Binding MedecinCommand}" CommandParameter="{Binding ElementName=Result}"></MenuItem>
+                <MenuItem Header="Gestion de Patients" Command="{Binding PatientCommand}" CommandParameter="{Binding ElementName=Result}"></MenuItem>
+                <MenuItem Header="Gestion de RDV" Command="{Binding RDVCommand}" CommandParameter="{Binding ElementName=Result}"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Consultation">
+                <MenuItem Header="Rechercher RDV par Date" Command="{Binding RDVDisplayCommand}" CommandParameter="{Binding ElementName=Result}"></MenuItem>
+                <MenuItem Header="Rechercher RDV par Patient" Command="{Binding RDVPatientCommand}" CommandParameter="{Binding ElementName=Result}"></MenuItem>
+            </MenuItem>
+        <MenuItem Header="Quitter" Command="{Binding ExitCommand}" CommandParameter="{Binding ElementName=Result}"></MenuItem>
+        </Menu>
+        <StackPanel x:Name="Result">
+
+        </StackPanel>
+    </StackPanel>
+</Window>

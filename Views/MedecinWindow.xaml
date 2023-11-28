@@ -1,0 +1,54 @@
+﻿<Window x:Class="DoctolibMVVM.Views.MedecinWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DoctolibMVVM.Views"
+        mc:Ignorable="d"
+        Title="MedecinWindow" Height="450" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="700"/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Column="0" Header="Médecin">
+            <StackPanel>
+                <Label Content="Code"></Label>
+                <TextBox Text="{Binding CodeMedecin}"></TextBox>
+                <Label Content="Nom"></Label>
+                <TextBox Text="{Binding NomMedecin}"></TextBox>
+                <Label Content="Téléphone"></Label>
+                <TextBox Text="{Binding TelMedecin}"></TextBox>
+                <Label Content="Date d'embauche"></Label>
+                <DatePicker SelectedDate="{Binding DateEmbauche}"></DatePicker>
+                    <!--<TextBox Text="{Binding DateEmbauche}"></TextBox>-->
+                <Label Content="Spécialité"></Label>
+                <ComboBox ItemsSource="{Binding Specialites}" SelectedValue="{Binding SpecialiteMedecin}"></ComboBox>
+                    <!--<TextBox Text="{Binding SpecialiteMedecin}"></TextBox>-->
+                <Button Content="Ajouter" Command="{Binding AddCommand}"></Button>
+                <Button Content="Modifier" Command="{Binding ModifyCommand}"></Button>
+                <Button Content="Supprimer" Command="{Binding DeleteCommand}"></Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="1" Header="Liste Médecins" MinWidth="400">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Nom du Médecin"></Label>
+                    <TextBox Text="{Binding Search}" MinWidth="100"></TextBox>
+                    <Button Command="{Binding SearchCommand}"  Content="Rechercher"></Button>
+                </StackPanel>
+                <ListView ItemsSource="{Binding Medecins}" SelectedItem="{Binding Medecin}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Code" Width="100" DisplayMemberBinding="{Binding CodeMedecin}"></GridViewColumn>
+                            <GridViewColumn Header="Nom" Width="100" DisplayMemberBinding="{Binding NomMedecin}"></GridViewColumn>
+                            <GridViewColumn Header="Téléphone" Width="150" DisplayMemberBinding="{Binding TelMedecin}"></GridViewColumn>
+                            <GridViewColumn Header="Date Embauche" Width="150" DisplayMemberBinding="{Binding DateEmbauche}"></GridViewColumn>
+                            <GridViewColumn Header="Spécialité" Width="100" DisplayMemberBinding="{Binding SpecialiteMedecin}"></GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
